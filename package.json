@@ -1,0 +1,87 @@
+{
+  "name": "code-run-with-custom-input",
+  "displayName": "Code Run With Custom Input",
+  "description": "Instead of entering user input line by line load your inputs all at once and run your code at a click of a button. Extension made to avoid inconveniences while testing inputs for platforms like code forces. This extension works only for python",
+  "version": "0.0.2",
+  "engines": {
+    "vscode": "^1.71.0"
+  },
+  "publisher": "Maruf-Sherefa",
+  "repository": "https://github.com/Maruf-S/visual-studio-extension-input-ease",
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onCommand:code-run-with-custom-input.run code with custom inputs",
+    "onLanguage:python"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "code-run-with-custom-input.run code with custom inputs",
+        "title": "Run code with inputs"
+      }
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "input-sidebar-view",
+          "title": "Run With Custom Input",
+          "icon": "media/play.svg"
+        }
+      ]
+    },
+    "views": {
+      "input-sidebar-view": [
+        {
+          "type": "webview",
+          "id": "input-sidebar",
+          "name": "Run With Custom Input",
+          "contextualTitle": "Run With Custom Input"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run package",
+    "compile": "rollup -c && webpack --mode production",
+    "watch": "concurrently \"rollup -c -w\" \"webpack --mode development --watch\"",
+    "package": "webpack --mode production --devtool hidden-source-map",
+    "compile-tests": "tsc -p . --outDir out",
+    "watch-tests": "tsc -p . -w --outDir out",
+    "pretest": "npm run compile-tests && npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/glob": "^7.2.0",
+    "@types/mocha": "^9.1.1",
+    "@types/node": "16.x",
+    "@types/vscode": "^1.71.0",
+    "@typescript-eslint/eslint-plugin": "^5.31.0",
+    "@typescript-eslint/parser": "^5.31.0",
+    "@vscode/test-electron": "^2.1.5",
+    "concurrently": "^7.4.0",
+    "eslint": "^8.20.0",
+    "glob": "^8.0.3",
+    "mocha": "^10.0.0",
+    "ts-loader": "^9.3.1",
+    "typescript": "^4.7.4",
+    "webpack": "^5.74.0",
+    "webpack-cli": "^4.10.0"
+  },
+  "dependencies": {
+    "@rollup/plugin-commonjs": "^22.0.2",
+    "@rollup/plugin-node-resolve": "^14.1.0",
+    "@rollup/plugin-typescript": "^8.5.0",
+    "@tsconfig/svelte": "^3.0.0",
+    "rollup": "^2.3.4",
+    "rollup-plugin-svelte": "^6.0.0",
+    "rollup-plugin-terser": "^7.0.2",
+    "svelte": "^3.50.1",
+    "svelte-check": "^2.9.1",
+    "svelte-preprocess": "^4.10.7",
+    "tree-kill": "^1.2.2"
+  }
+}

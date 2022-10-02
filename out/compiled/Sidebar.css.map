@@ -1,0 +1,12 @@
+{
+  "version": 3,
+  "file": "Sidebar.css",
+  "sources": [
+    "Sidebar.svelte"
+  ],
+  "sourcesContent": [
+    "<script lang=\"ts\">import Play from \"./Play.svelte\";\r\nlet input = \"\";\r\nfunction sendCode() {\r\n    tsvscode.postMessage({\r\n        type: \"sendCode\",\r\n        value: input,\r\n    });\r\n}\r\n</script>\r\n\r\n<h4>Input</h4>\r\n<textarea rows=\"5\" bind:value={input} />\r\n<button\r\n  class=\"btn\"\r\n  on:click={() => {\r\n    sendCode();\r\n  }}\r\n>\r\n  <Play />\r\n  <span>Run</span>\r\n</button>\r\n\r\n<style>\r\n  .btn {\r\n    justify-content: center;\r\n    align-items: center;\r\n    display: flex;\r\n  }\r\n  .btn span {\r\n    margin-left: 2px;\r\n  }\r\n</style>\r\n"
+  ],
+  "names": [],
+  "mappings": "AAuBE,IAAI,4BAAC,CAAC,AACJ,eAAe,CAAE,MAAM,CACvB,WAAW,CAAE,MAAM,CACnB,OAAO,CAAE,IAAI,AACf,CAAC,AACD,kBAAI,CAAC,IAAI,cAAC,CAAC,AACT,WAAW,CAAE,GAAG,AAClB,CAAC"
+}
